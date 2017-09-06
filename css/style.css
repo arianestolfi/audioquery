@@ -35,16 +35,12 @@ img {
     /*background-color: #aaa;*/
     /
 }
-#pagpar {
-    width: 100%;
-    height: 100%;
-    position: relative;
+
+.smallimg {
+    width: 200px;
+    height: 50px;
 }
-#pagimpar {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
+
 #dupla {
     overflow: hidden;
 }

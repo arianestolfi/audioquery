@@ -1,17 +1,23 @@
 <section id="list" class="panpar">
    
-                <input type="text" class="busca control" ng-model="query" placeholder="busca"/>    
+                <input type="text" class="busca control" ng-model="query" placeholder="busca"/>
+
+              <a ng-hide="response.previous == null" ng-click="makequery(response.previous)">previous</a>  
+              <a ng-hide="response.next == null" ng-click="makequery(response.next)">next</a> 
+              <a ng-hide=""> 
  <div id="results">
                 <ul>
                       <li ng-repeat="item in results | array">{{item.name}} <br/>
+
+                        <img class="smallimg" ng-src="{{item.images['spectral_m']}}"/>
                       	 <audio controls >
                              <source ng-src="{{item.previews['preview-lq-mp3']}}" type="audio/mp3">
                              <source ng-src="{{item.previews['preview-lq-ogg']}}" type="audio/ogg">
 
 						    </audio> 
+</li>  
+                
 
-
-                      </li>  
                 </ul>
   </div>
 

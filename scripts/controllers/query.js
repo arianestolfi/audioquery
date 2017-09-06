@@ -4,32 +4,38 @@ app.controller('queryController', ['$scope', '$window', '$http', '$location', '$
 var query = $scope.query;
 
 
+//$scope.query = 'gun';
 
-$scope.query = 'gun';
+
+
+$scope.$watch('query', function() {
+
+  $scope.makequery('http://www.freesound.org/apiv2/search/text/?query=' + $scope.query + '&fields=id,name,previews,tags,images&page_size=100');
+        
+    });
+
+ 
+
+$scope.makequery = function(urlbase) {
+
 
 var req = {
  method: 'GET',
- url: 'http://www.freesound.org/apiv2/search/text/?token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI&query=' + query + '&fields=id,name,previews,tags',
+ url: urlbase + '&token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI',
  headers: {
    'Content-Type': 'application/json'
  }
  
 };
 
- $.ajax(req).
+  $.ajax(req).
       then(function(response) {
         // when the response is available
-        //console.log(response);
-        $scope.items = response.results;
-        $scope.results = [];
+        console.log(response);
 
       $scope.$apply(function () {
-          for (elem in $scope.items) {
-                $scope.results.push($scope.items[elem]);
-            }
-        //console.log($scope.results);
-        //console.log($scope.results[0].previews['preview-lq-mp3']);
-        return $scope.results;        
+          $scope.response = response;
+          $scope.results = response.results;
       });
       }, function(response) {
         // error.
@@ -41,6 +47,8 @@ var req = {
       });
 
 
+
+}
 
 
 
