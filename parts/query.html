@@ -1,0 +1,79 @@
+<div id="testes">
+
+</div>
+
+
+<div id="fullpage">
+
+    <div id="faixa1" class="par fx" ng-class="{simples: (proporcao < 1)}">
+        <div ng-main2="par">
+            <input type="text" class="busca control"  ng-model="query" placeholder="busca"/>
+        </div>
+
+    </div>
+
+
+    <div id="faixa2" class="impar fx" ng-show="proporcao>1">
+        <div ng-main="impar">   
+    </div>
+
+        
+        
+    </div>
+
+
+
+</div>
+
+<div id="slider" title="ajustar a largura" >
+    <div class="control fa fa-arrows-h timer slider" ng-show="proporcao>1"></div>
+</div>
+
+
+<script>
+    $("#slider").draggable({
+        axis: "x",
+        containment: "body",
+        start: function() {
+
+        },
+        drag: function() {
+            updatedivsize();
+        },
+        stop: function() {
+
+        }
+    });
+    
+    $("#slider").dblclick(function(){
+        resetdivsize();
+    });
+
+    function updatedivsize() {
+        var largura = $(window).width();
+        var larguraslider = 50;
+        var largurafaixa = largura - larguraslider;
+        largurafaixa = largurafaixa / 2;
+        largurafaixa = largurafaixa + 'px';
+        var posicao = $("#slider").position();
+        var ladopar = largura - posicao.left;
+        var ladoimpar = posicao.left + 'px';
+        var largurapar = largura - posicao.left;
+        $("#faixa1").css('position', 'absolute');
+        $("#faixa1").css('width', posicao.left);
+        $("#faixa1").css('left', '0');
+        $("#faixa2").css('left', ladoimpar);
+        $("#faixa2").css('right', '0');
+        $("#faixa2").css('width', largurapar);
+
+    }
+
+    function resetdivsize() {
+        $("#faixa1").css('width', '50%');
+        $("#faixa2").css('left', '50%');
+
+        $("#faixa2").css('width', '50%');
+        $("#slider").css('left', '50%');
+    }
+    
+</script>

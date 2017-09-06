@@ -1,0 +1,758 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: helvetica, arial, sans-serif;
+}
+
+input, textarea, keygen, select, button {
+font-size: 12px
+
+}
+
+body {
+    background-color: #efefef;
+}
+ul,
+li {
+    list-style-type: none;
+    list-style-position: outside;
+}
+a {
+    text-decoration: none;
+}
+a:visited {
+    color: #666;
+}
+
+img {
+    color: #fff;
+}
+.pag {
+    position: absolute;
+    top: 0;
+    /*background-color: #aaa;*/
+    /
+}
+#pagpar {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#pagimpar {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#dupla {
+    overflow: hidden;
+}
+#menu {
+    width: 100%;
+    height: 0px;
+    z-index: 50;
+    position: absolute;
+}
+#menu ul {
+    width: 200px;
+}
+.fx {
+    overflow: hidden;
+    position: relative;
+}
+.fx .zoom {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    height: 100%;
+}
+
+
+
+#zoom1 {
+    right: 0;
+}
+#zoom2 {
+    left: 0;
+}
+.menu nav {}
+
+.menu {
+    width: 100%;
+    position: relative;
+}
+
+
+
+.menu select {
+    margin-top: 5px;
+}
+
+#menu li {
+    background-color: #fff;
+    display: block;
+    border: 1px solid #aaa;
+    z-index: 50;
+}
+
+#menu li:hover {
+    background-color: #666;
+}
+
+#menupar {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 50px;
+    z-index: 50;
+    width: 100%;
+    margin: 0;
+    padding-left:5px;
+}
+
+#menuimpar {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    margin-right: 0px;
+    z-index: 50;
+}
+
+.busca {
+    height: 25px;
+    width: 100px;
+    border: 1px solid black;
+    border-radius: 0px;
+    margin-top: 5px;
+}
+
+.buttons {
+margin-bottom: 5px;
+ position: relative;   
+}
+
+
+
+.buttons img {
+width: 24px;
+    height: 24px;
+}
+
+
+
+.menu .buttons {
+    margin-top: 5px;
+    z-index: 50;
+    position: relative;
+    top:-1px;
+    width: 120px;
+    display: inline;
+}
+.buttons button {
+    padding: 0px;
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 0px;
+    margin-top: 5px;
+    text-align: center;
+    position: relative;
+    top: 3px;
+    font-size: 15px;
+    
+}
+
+.buttons button:hover {
+    background-color: #f00;
+    color: #fff;
+    border-color: red;
+}
+
+.control {
+    padding: 0px 5px;
+    height: 25px;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 12px;
+    
+}
+
+.control:hover {
+    background-color: #f00;
+    color: #fff;
+    border-color: red;
+
+}
+
+.codigo {
+    font-size: 12px;
+    z-index: 0;
+}
+
+.autores {
+    text-align: left;
+}
+
+.autores option {
+    padding-left: 5px;
+}
+
+button span.glyphicon {
+    position: relative;
+    top: 0px;
+    
+}
+#dupla {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.nav {
+    z-index: 50;
+}
+
+/*infinito*/
+
+._tile {
+    z-index: 30;
+}
+.pag {
+    width: 100%;
+    height: 1000px;
+    float: left;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 10;
+}
+.pag body {
+    background-color: #f00;
+    z-index: 10;
+    position: absolute;
+    top: 20px;
+}
+.par .pag {
+    background-position: right;
+}
+.pag div {}
+
+#fullpage {
+width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+}
+
+#fullpage .digital div {
+    display: block;
+}
+#fullpage img.digital {}
+.par {
+    width: 50%;
+    height: 100%;
+    float: left;
+    position: relative;
+}
+.par  {
+    text-align: right;
+}
+.par .menu  {
+text-align: left;
+}
+
+.impar .menu  {
+text-align: right;
+}
+
+.impar {
+    width: 50%;
+    height: 100%;
+    float: left;
+    position: relative;
+}
+.seta {
+    background-color: transparent;
+    z-index: 20;
+    opacity: 0.5;
+    position: relative;
+    float: left;
+}
+.setas {
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 60px;
+}
+.seta:hover {
+    background-color: #666;
+}
+
+.controll {
+position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 25px;
+    height: 30%;
+    margin: auto;
+    z-index: 500;
+}
+
+.controll.impar {
+right:5px;
+}
+
+.controll.par {
+left: 5px;
+}
+
+
+
+.hor {
+    width: 100%;
+    height: 10%;
+    text-align: center;
+}
+.vert {
+    width: 20%;
+    height: 80%;
+    vertical-align: middle;
+    text-align: center;
+}
+.dir {
+    float: right;
+}
+#variaveis {
+    font-size: 10px;
+}
+img {
+    height: 100%;
+    width: auto;
+}
+#menu li.active {
+    background-color: red;
+}
+.panzoom {
+    -webkit-backface-visibility: initial !important;
+    -webkit-transform-origin: 50% 50%;
+    
+}
+
+
+
+/*range http://danielstern.ca/range.css/#/*/
+
+input[type=range] {
+    -webkit-appearance: none;
+    display: inline;
+    width: 120px;
+    margin: 10px 0;
+
+}
+
+
+
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4.3px;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+    background: #ffffff;
+    border-radius: 1.3px;
+    border: 1px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    border: 1.1px solid #000000;
+    height: 15px;
+    width: 15px;
+    border-radius: 0px;
+    background: #ffffff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -6.35px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ffffff;
+}
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 4.3px;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+    background: #ffffff;
+    border-radius: 1.3px;
+    border: 1px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    border: 1.1px solid #000000;
+    height: 15px;
+    width: 15px;
+    border-radius: 0px;
+    background: #ffffff;
+    cursor: pointer;
+}
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 4.3px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: #fcfcfc;
+    border: 1px solid #000000;
+    border-radius: 2.6px;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+}
+input[type=range]::-ms-fill-upper {
+    background: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 2.6px;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+}
+input[type=range]::-ms-thumb {
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    border: 1.1px solid #000000;
+    height: 15px;
+    width: 15px;
+    border-radius: 0px;
+    background: #ffffff;
+    cursor: pointer;
+    height: 4.3px;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #ffffff;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #ffffff;
+}
+
+/* select */
+
+select {
+    height: 25px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 0;
+}
+
+
+/* apoio */
+
+#apoio {
+height:50px;
+width:25px;
+    margin: 0 0 0px 5px;
+    z-index: 500;
+    background-color: #fff;
+    border: 1px solid black; 
+    border-bottom: 0;
+    -webkit-border-top-left-radius: 0px;
+-webkit-border-top-right-radius: 0px;
+-moz-border-radius-topleft: 0px;
+-moz-border-radius-topright: 0px;
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
+    color: #000;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition-property: width, height, border-radius, margin;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+    
+    
+}
+
+#sobre {
+height:50px;
+width:25px;
+    margin: 0 5px 0px 0;
+    z-index: 500;
+    background-color: #fff;
+    border: 1px solid black; 
+    border-bottom: 0;
+    color: #000;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition-property: width, height, border-radius, margin;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+    
+    
+}
+
+#sobre:hover {
+    background-color: #f00;
+    color: #fff;
+    border: 1px solid #f00;
+}
+
+.sobre {
+    position: relative;
+    top: 40px;
+    font-size: 10px;
+}
+
+.help {
+    height: 100%;
+    min-width: 25px;
+    width: calc(100%-75px);
+
+}
+
+#textohome {
+       position: absolute;
+       top: 0;
+       left: 0;
+       height: 100%;
+       width: 100%;
+       overflow: auto;
+       -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+box-sizing: border-box;         /* Opera/IE 8+ */
+
+}
+
+
+
+.vertical {
+   -ms-transform: rotate(270deg); /* IE 9 */
+    -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+    transform: rotate(270deg);
+    width: 0;
+    height: 0;
+    position: relative;
+    overflow: visible;
+}
+
+#apoio:hover {
+    width: 100%;
+    height: 150px;
+    margin: 0;
+    border-radius: 0;
+    bottom: 0;
+    left: 0;
+    color: transparent;
+    background-image: url(img/apoio.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-color: #231f20;
+    
+}
+
+
+
+.apoio {
+position: relative;
+    top: 40px;s
+    right: -2px;
+    font-size: 10px;
+}
+
+#faixa1.simples {
+width: 100%;
+}
+
+/*busca*/
+
+#indice li,
+#indice2 li{
+float: left;
+    width: 100px;
+}
+
+#indice li  a,
+#indice2 li  a
+{
+float: left;
+    height:100px;
+    width: 100%;
+    overflow: visible;
+}
+
+/* miniaturas*/
+.miniatura {
+    position: relative;
+    overflow: visible;
+}
+
+.miniaturas img {
+    z-index: 2;
+    position: relative;
+}
+
+.miniaturas .titulo {
+    display: none;
+    font-size: 9pt;
+    color:#fff;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+    text-transform: lowercase;
+}
+
+.miniatura:hover .titulo{
+    display: visible;
+    background-color: #fff;
+    color: #000;
+    z-index: 10;
+}
+
+.miniatura .titulo p{
+    margin: 5px;
+}
+
+.minimpar a{
+text-align: left;
+}
+.minimpar img{
+position: relative;
+left: 0;
+}
+
+.minmpar a{
+text-align: right;
+}
+
+#indice,
+#indice2 {
+width: calc(100% - 5px);
+    height: calc(100% - 35px);
+    overflow: auto;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 0;
+    
+}
+
+#indice2 {
+   margin-left: 5px; 
+}
+
+#indice {
+    margin-right: 5px;
+}
+
+.thumbs {
+position: absolute;
+    width: 50%;
+z-index: 600;
+}
+
+#slider {
+    width: 27px;
+    height: 100%;
+    background-color:transparent;
+    position: absolute;
+    left: 50%;
+    z-index: 600;
+    cursor: ew-resize;
+}
+
+#slider:hover {
+    border-left: 1px solid black;
+}
+
+
+
+#slider .control {
+    position: absolute;
+    margin-top: 0px;
+    margin-left: 0px;
+    line-height: 25px;
+    bottom: 0px;
+}
+
+.faixa {
+width: 100%;
+height: 100%;
+position: relative;
+ z-index: 0;
+    
+
+}
+
+.triangulo {
+border-top:20px solid #fff;
+border-right: 20px solid transparent;
+height: 1px;
+width:1px;
+z-index: 900;
+}
+
+#faixa1 .info {
+right: 0;
+}
+
+#faixa2 .info {
+left: 0;
+}
+
+
+.info {
+position: absolute;
+top: 0;
+    right: 0;
+    height: calc(100% - 75px);
+    padding: 50px 50px 25px 50px;
+    max-width: 650px;
+    overflow: auto;
+    text-align: left;
+    background-color: #fff;
+    margin-bottom: 50px;
+    
+   
+}
+
+
+.info h3 {
+    font-size: 14px;
+    margin-bottom: 14px;
+  
+}
+
+.info img {
+margin-left: -50px;
+}
+.oculto {
+
+}
+
+.parent {
+width: 100%;
+height: calc(100% );
+
+}
+
+.par .caixa {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+}
+
+.caixa {
+position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+}

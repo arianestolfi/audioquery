@@ -1,0 +1,336 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: helvetica, arial, sans-serif;
+}
+body {
+    background-color: #efefef;
+}
+ul,
+li {
+    list-style-type: none;
+    list-style-position: outside;
+}
+a {
+    text-decoration: none;
+}
+a:visited {
+    color: #666;
+}
+.pag {
+    position: absolute;
+    top: 0;
+    /*background-color: #aaa;*/
+    /
+}
+#pagpar {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#pagimpar {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#dupla {
+    overflow: hidden;
+}
+
+.fx {
+    overflow: hidden;
+    position: relative;
+}
+.fx .zoom {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    height: 100%;
+}
+#zoom1 {
+    right: 0;
+}
+#zoom2 {
+    left: 0;
+}
+.menu nav {}
+
+
+.menu {
+    width: 100%;
+    height: 0px;
+    z-index: 50;
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+}
+#menu ul {
+    width: 200px;
+}
+.zoom-range {
+border-top: 10px;}
+
+.menu select {
+    margin-top: 5px;
+}
+
+#menu li {
+    background-color: #fff;
+    display: block;
+    border: 1px solid #aaa;
+    z-index: 50;
+}
+
+#menu li:hover {
+    background-color: #666;
+}
+
+#menupar {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 200px;
+    z-index: 50;
+    text-align: left;
+}
+
+#menuimpar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    margin-right: 10px;
+    z-index: 50;
+}
+
+.busca {
+    height: 25px;
+    width: 120px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.buttons {
+    margin-top: 5px;
+    z-index: 50;
+    position: relative;
+    display: inline;
+}
+
+.par .zoomctrl {
+float: left;
+    margin-right: 20px;
+}
+
+.buttons button {
+    padding: 5px;
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.range {
+width: 120px;
+    display: inline-block;
+    
+}
+
+#dupla {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.nav {
+    z-index: 50;
+}
+
+/*infinito*/
+
+._tile {
+    z-index: 30;
+}
+.pag {
+    width: 100%;
+    height: 1000px;
+    float: left;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 10;
+}
+.pag body {
+    background-color: #f00;
+    z-index: 10;
+    position: absolute;
+    top: 20px;
+}
+.par .pag {
+    background-position: right;
+}
+.pag div {}
+#fullpage .digital div {
+    display: block;
+}
+#fullpage img.digital {}
+.par {
+    width: 50%;
+    height: 100%;
+    float: left;
+    position: relative;
+}
+.par div {
+    text-align: right;
+}
+.impar {
+    width: 49%;
+    height: 100%;
+    float: left;
+    position: relative;
+}
+.seta {
+    background-color: transparent;
+    z-index: 20;
+    opacity: 0.5;
+    position: relative;
+    float: left;
+}
+.setas {
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 60px;
+}
+.seta:hover {
+    background-color: #666;
+}
+.hor {
+    width: 100%;
+    height: 10%;
+    text-align: center;
+}
+.vert {
+    width: 20%;
+    height: 80%;
+    vertical-align: middle;
+    text-align: center;
+}
+.dir {
+    float: right;
+}
+#variaveis {
+    font-size: 10px;
+}
+img {
+    height: 100%;
+    width: auto;
+}
+#menu li.active {
+    background-color: red;
+}
+.panzoom {
+    -webkit-backface-visibility: initial !important;
+    -webkit-transform-origin: 50% 50%;
+}
+
+/*range http://danielstern.ca/range.css/#/*/
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 5.35px 0;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4.3px;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+    background: #ffffff;
+    border-radius: 1.3px;
+    border: 1px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    border: 1.1px solid #000000;
+    height: 15px;
+    width: 15px;
+    border-radius: 0px;
+    background: #ffffff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -6.35px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ffffff;
+}
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 4.3px;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+    background: #ffffff;
+    border-radius: 1.3px;
+    border: 1px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    border: 1.1px solid #000000;
+    height: 15px;
+    width: 15px;
+    border-radius: 0px;
+    background: #ffffff;
+    cursor: pointer;
+}
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 4.3px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: #fcfcfc;
+    border: 1px solid #000000;
+    border-radius: 2.6px;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+}
+input[type=range]::-ms-fill-upper {
+    background: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 2.6px;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+}
+input[type=range]::-ms-thumb {
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    border: 1.1px solid #000000;
+    height: 15px;
+    width: 15px;
+    border-radius: 0px;
+    background: #ffffff;
+    cursor: pointer;
+    height: 4.3px;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #ffffff;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #ffffff;
+}
+
+/* select */
+
+select {
+    height: 25px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 0;
+}

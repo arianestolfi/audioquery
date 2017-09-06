@@ -1,0 +1,35 @@
+<section id="list" class="panpar">
+   
+                <input type="text" class="busca control" ng-model="query" placeholder="busca"/>    
+ <div id="results">
+                <ul>
+                      <li ng-repeat="item in results | array">{{item.name}} <br/>
+                      	 <audio controls >
+                             <source ng-src="{{item.previews['preview-lq-mp3']}}" type="audio/mp3">
+                             <source ng-src="{{item.previews['preview-lq-ogg']}}" type="audio/ogg">
+
+						    </audio> 
+
+
+                      </li>  
+                </ul>
+  </div>
+
+
+    <div id="testes">
+        <!--<span ng-repeat="pagina in objetos | array | filter:{'collections':dir}">{{pagina.idno}}</br></span>-->
+        <h1></h1>
+        
+        <div id="counter" ng-model="posicao" >
+<!--
+    <li ng-repeat="pagina in (filtrados = (objetos | array | filter: busca))" ng-class="{selected: pagina.idno === indice}">{{filtrados.indexOf(pagina)}}{{pagina.idno}}</li>
+-->
+    </div>
+    
+
+    </div>
+
+
+
+
+</section>
