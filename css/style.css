@@ -58,16 +58,23 @@ section {
     display: block;
 }
 
+.credits {
+    position: absolute;
+    display: block;
+    bottom: 0;
+
+}
+
 audio {
     width: 200px;
 }
 
 #list {
-    width: 75%;
+    width: 90%;
 }
 
 #playlist {
-    width: 25%;
+    width: 10%;
     background-color: #fff;
     height: 100%;
 }
