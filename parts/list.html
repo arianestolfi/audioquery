@@ -1,25 +1,47 @@
-<section id="list" class="panpar">
+<section id="list" >
    
-                <input type="text" class="busca control" ng-model="query" placeholder="busca"/>
+               
+
+
+                <div class="buttons" ng-hide="visible">
+                    <input type="text" class="busca control" ng-model="query" placeholder="search"/>
+                    <!--<button class="zoom-out fa fa-minus"></button>-->
+                    <button class="zoom-in fa fa-plus"></button>
+                    <!--<button class="resetpar fa fa-arrows-alt"></button>-->
+                    <!--<button class="fa fa-rotate-right" id="rotateIcon" data-ng-init="rd=1;" data-ng-click="RotateImage('img1'+ $index,rd);rd=rd+1;rd==4?rd=0:''"></button>-->
+                    <!--<button class="prev-pag resetpar fa fa-arrow-up" ng-click="moveparprev()"></button>-->
+                    <button ng-hide="response.previous == null" class="next-pag resetpar resetimpar fa fa-arrow-left" ng-click="makequery(response.previous)"></button>
+                    <button ng-hide="response.next == null" class="next-pag resetpar resetimpar fa fa-arrow-right" ng-click="makequery(response.next)"></button>
+
+                    <button class="prev-pag resetpar fa fa-arrow-down" ng-click="moveparnext()"></button>
+                    
+                </div><br>
+                
 
               <a ng-hide="response.previous == null" ng-click="makequery(response.previous)">previous</a>  
               <a ng-hide="response.next == null" ng-click="makequery(response.next)">next</a> 
-              <a ng-hide=""> 
+              <a ng-hide=""> </a>
  <div id="results">
-                <ul>
-                      <li ng-repeat="item in results | array">{{item.name}} <br/>
+                <div>
+                      
+              <div ng-repeat="item in results | array" class="result" id="{{'#' + item.id}}" draggable>
 
-                        <img class="smallimg" ng-src="{{item.images['spectral_m']}}"/>
+                        <img class="smallimg" ng-src="{{item.images['spectral_m']}}"/><br/>
                       	 <audio controls >
                              <source ng-src="{{item.previews['preview-lq-mp3']}}" type="audio/mp3">
                              <source ng-src="{{item.previews['preview-lq-ogg']}}" type="audio/ogg">
 
 						    </audio> 
-</li>  
+                     <span class="info">{{item.name}} </span><br/>
+
+</div>  
                 
 
-                </ul>
+                </div>
   </div>
+
+
+  
 
 
     <div id="testes">
@@ -37,5 +59,11 @@
 
 
 
+
+
+
+</section>
+
+<section id="playlist" droppable>
 
 </section>

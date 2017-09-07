@@ -1,0 +1,3 @@
+to get the full iframe from freesound
+
+<iframe ng-src="{{'http://freesound.org/embed/sound/iframe/' + item.id +'/simple/medium'}}"></iframe>

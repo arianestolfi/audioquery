@@ -10,7 +10,7 @@ var query = $scope.query;
 
 $scope.$watch('query', function() {
 
-  $scope.makequery('http://www.freesound.org/apiv2/search/text/?query=' + $scope.query + '&fields=id,name,previews,tags,images&page_size=100');
+  $scope.makequery('http://www.freesound.org/apiv2/search/text/?query=' + $scope.query + '&fields=id,name,previews,tags,images&page_size=50');
         
     });
 
@@ -46,6 +46,16 @@ var req = {
 
       });
 
+}
+
+
+
+
+$scope.play = function() {
+//change url
+//remove element from query
+
+//create element on playlist
 
 
 }

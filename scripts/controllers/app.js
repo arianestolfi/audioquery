@@ -64,6 +64,8 @@ app.directive('ngMain2', function() {
   }
 });
 
+
+
 app.filter('numberFixedLen', function () {
     return function (a, b) {
         return (1e4 + a + "").slice(-b)
