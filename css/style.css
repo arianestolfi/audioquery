@@ -70,13 +70,12 @@ audio {
 }
 
 #list {
-    width: 90%;
+    width: calc(100% - 200px);
 }
 
 #playlist {
-    width: 10%;
+    width: 200px;
     background-color: #fff;
-    height: 100%;
 }
 
 #menu {

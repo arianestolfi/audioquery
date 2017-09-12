@@ -51,7 +51,26 @@ var req = {
 
 
 
-$scope.play = function() {
+$scope.play = function(itemsrc) {
+
+  //var thisaudio = "#aud" + itemid;
+  //var myaudio = document.getElementById(thisaudio);
+  //console.log(thisaudio);
+  //myaudio.play();
+var sound      = document.createElement('audio');
+//sound.id       = 'aud' + itemid;
+sound.controls = 'controls';
+sound.src      = itemsrc;
+sound.type     = 'audio/mpeg';
+//document.getElementById('playlist').insertBefore(sound);
+$('#playlist').prepend(sound);
+sound.play();
+
+//var audio = document.createElement("AUDIO");        // Create a <button> element
+//var t = document.createTextNode("CLICK ME");       // Create a text node
+//btn.appendChild(t);                                // Append the text to <button>
+//document.body.appendChild(btn);
+
 //change url
 //remove element from query
 

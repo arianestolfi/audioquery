@@ -1,3 +1,19 @@
 to get the full iframe from freesound
 
 <iframe ng-src="{{'http://freesound.org/embed/sound/iframe/' + item.id +'/simple/medium'}}"></iframe>
+
+
+
+                
+first audio query
+  <div ng-repeat="item in results | array" class="result"  ng-click="play(item.id)">
+
+                        <img class="smallimg" ng-src="{{item.images['spectral_m']}}"/><br/>
+                  <audio controls id="{{'#aud' + item.id}}">
+                             <source ng-src="{{item.previews['preview-lq-mp3']}}" type="audio/mp3">
+                             <source ng-src="{{item.previews['preview-lq-ogg']}}" type="audio/ogg">
+
+                </audio> 
+                     <span class="info">{{item.name}} </span><br/>
+
+              </div> 
