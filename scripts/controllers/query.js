@@ -10,7 +10,7 @@ var query = $scope.query;
 
 $scope.$watch('query', function() {
 
-  $scope.makequery('http://www.freesound.org/apiv2/search/text/?query=' + $scope.query + '&fields=id,name,previews,tags,images&page_size=50');
+  $scope.makequery('http://www.freesound.org/apiv2/search/text/?query=' + $scope.query + '&fields=id,name,previews,tags,images,duration&page_size=80');
         
     });
 
@@ -51,27 +51,27 @@ var req = {
 
 
 
-$scope.play = function(itemsrc) {
+$scope.play = function(itemsrc, itemid) {
 
-  //var thisaudio = "#aud" + itemid;
-  //var myaudio = document.getElementById(thisaudio);
-  //console.log(thisaudio);
-  //myaudio.play();
-var sound      = document.createElement('audio');
-//sound.id       = 'aud' + itemid;
-sound.controls = 'controls';
-sound.src      = itemsrc;
-sound.type     = 'audio/mpeg';
-//document.getElementById('playlist').insertBefore(sound);
-$('#playlist').prepend(sound);
-sound.play();
+//create audio element  
 
-//var audio = document.createElement("AUDIO");        // Create a <button> element
-//var t = document.createTextNode("CLICK ME");       // Create a text node
-//btn.appendChild(t);                                // Append the text to <button>
-//document.body.appendChild(btn);
+
+var curadress = $location.path();
+
+var adress = curadress + ","+ itemid;
 
 //change url
+$location.path(adress, false);
+
+var sound      = document.createElement('audio');
+sound.id       = 'aud' + itemid;
+sound.controls = 'controls';
+//sound.loop = 'loop';
+sound.src      = itemsrc;
+sound.type     = 'audio/mpeg';
+//put element on playlist
+$('#playlist').prepend(sound);
+sound.play();
 //remove element from query
 
 //create element on playlist

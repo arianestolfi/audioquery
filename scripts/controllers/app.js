@@ -7,6 +7,7 @@ var app = angular.module('app', [
     //para permitir links externos
 });
 
+
 function addLeadingZeros (n, length)
 {
     var str = (n > 0 ? n : -n) + "";
@@ -23,6 +24,21 @@ function addLeadingZeros (n, length)
 
 //testController end  
 
+
+app.run(['$route', '$rootScope', '$location', function ($route, $rootScope, $location) {
+        var original = $location.path;
+        $location.path = function (path, reload) {
+            if (reload === false) {
+                var lastRoute = $route.current;
+                var un = $rootScope.$on('$locationChangeSuccess', function () {
+                    $route.current = lastRoute;
+                    un();
+                });
+            }
+
+            return original.apply($location, [path]);
+        };
+    }])
 
 
 app.config(function ($routeProvider, $locationProvider, $httpProvider) {
@@ -72,6 +88,12 @@ app.filter('numberFixedLen', function () {
     }
 });
 
+app.filter('sectime', [function() {
+    return function(seconds) {
+        return new Date(1970, 0, 1).setSeconds(seconds);
+    };
+}])
+
 app.filter('tostring', function() {
   return function(a) { 
     return a.toString();
@@ -101,6 +123,8 @@ app.filter('array', function() {
    return filtered;
   };
 });
+
+
 
 
 function findinarray(arraytosearch, key, valuetosearch) {

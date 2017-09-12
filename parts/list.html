@@ -19,15 +19,20 @@
                 
 
               <a ng-hide=""> </a>
+
  <div id="results">
                 <div>
                       
-              <div ng-repeat="item in results | array" class="result" id="{{'#' + item.id}}" ng-click="play('{{item.previews['preview-lq-mp3']}}')">
+              <div ng-repeat="item in results | array" class="result" id="{{'#' + item.id}}" ng-click="play('{{item.previews['preview-hq-mp3']}}', {{item.id}})">
 
                     <img class="smallimg" ng-src="{{item.images['spectral_m']}}"/><br/>
-                    <span class="info">{{item.name}} </span><br/>
+                    <span class="info">{{item.duration | sectime | date:'mm:ss'}} | {{item.name}} </span> <br/>
 
               </div>  
+
+
+
+              
                 
 
                 </div>
