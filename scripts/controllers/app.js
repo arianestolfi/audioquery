@@ -24,7 +24,7 @@ function addLeadingZeros (n, length)
 
 //testController end  
 
-
+//prevent reloading of page when changing adress
 app.run(['$route', '$rootScope', '$location', function ($route, $rootScope, $location) {
         var original = $location.path;
         $location.path = function (path, reload) {

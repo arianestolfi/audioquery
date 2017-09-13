@@ -47,6 +47,12 @@
 
   <div id="audios">
 
+    <div id="preloaded">
+
+      <iframe ng-repeat="x in sounds track by $index" frameborder="0" scrolling="no" src="{{'https://www.freesound.org/embed/sound/iframe/' + x + '/simple/medium_no_info/' }}" width="200" height="80"></iframe>
+
+    </div>
+
   </div>
 
 

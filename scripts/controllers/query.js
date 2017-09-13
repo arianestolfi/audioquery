@@ -9,7 +9,6 @@ var query = $scope.query;
 
 
 $scope.$watch('query', function() {
-
   $scope.makequery('http://www.freesound.org/apiv2/search/text/?query=' + $scope.query + '&fields=id,name,previews,tags,images,duration&page_size=80');
         
     });
@@ -48,21 +47,36 @@ var req = {
 
 }
 
+//verifying url for pre-selected samples
+    
+var queryString = $location.path();
+
+if (queryString) {
+  var sounds = queryString.split("=");
+  var sounds = sounds[1];
+  var sounds = sounds.split(",");
+  $scope.sounds = sounds;
+  console.log(sounds);
+} 
 
 
 
 $scope.play = function(itemsrc, itemid) {
 
-//create audio element  
-
-
+//verify adress
 var curadress = $location.path();
-
-var adress = curadress + ","+ itemid;
+if (curadress) {
+  var partsadress = curadress.split("=");
+  var adress = partsadress[0] + "=" + itemid + ',' + partsadress[1];
+} else {
+  var adress = 'sounds=' + itemid;
+}
 
 //change url
 $location.path(adress, false);
 
+
+//create audio element  
 var sound      = document.createElement('audio');
 sound.id       = 'aud' + itemid;
 sound.controls = 'controls';
@@ -72,10 +86,6 @@ sound.type     = 'audio/mpeg';
 //put element on playlist
 $('#playlist').prepend(sound);
 sound.play();
-//remove element from query
-
-//create element on playlist
-
 
 }
 
