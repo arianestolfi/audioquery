@@ -1,9 +1,6 @@
-<section id="list" >
-   
-               
+<section id="playlist">
 
-
-                <div class="buttons" ng-hide="visible">
+  <div class="buttons" ng-hide="visible">
                     <input type="text" class="busca control" ng-model="query" placeholder="search"/>
                     <!--<button class="zoom-out fa fa-minus"></button>-->
                     <a href="http://www.codigo.xyz/audioquery/" target="_blank" ><button class="zoom-in fa fa-plus"></button></a>
@@ -16,6 +13,30 @@
                     <!--<button class="prev-pag resetpar fa fa-arrow-down" ng-click="moveparnext()"></button>-->
                     
                 </div><br>
+
+
+
+  <div id="audios">
+
+    <div id="preloaded">
+
+      <iframe ng-repeat="x in sounds track by $index" frameborder="0" scrolling="no" src="{{'https://www.freesound.org/embed/sound/iframe/' + x + '/simple/medium_no_info/' }}" width="200" height="80"></iframe>
+
+    </div>
+
+  </div>
+
+
+  <p class="credits">experimental client for the <a href="http://freesound.org/docs/api/" target="_blank">freesound API</a> <br/><a href="http://ariane.stolfi.org" target="_blank">AS 2017</a></p>
+</section>
+
+
+<section id="list" >
+   
+               
+
+
+                
                 
 
               <a ng-hide=""> </a>
@@ -23,7 +44,7 @@
  <div id="results">
                 <div>
                       
-              <div ng-repeat="item in results | array" class="result" id="{{'#' + item.id}}" ng-click="play('{{item.previews['preview-hq-mp3']}}', {{item.id}})">
+              <div ng-repeat="item in results | array | orderBy:'duration'" class="result" id="{{'#' + item.id}}" ng-click="play('{{item.previews['preview-hq-mp3']}}', {{item.id}})">
 
                     <img class="smallimg" ng-src="{{item.images['spectral_m']}}"/><br/>
                     <span class="info">{{item.duration | sectime | date:'mm:ss'}} | {{item.name}} </span> <br/>
@@ -42,19 +63,4 @@
 
 
 
-</section>
-<section id="playlist">
-
-  <div id="audios">
-
-    <div id="preloaded">
-
-      <iframe ng-repeat="x in sounds track by $index" frameborder="0" scrolling="no" src="{{'https://www.freesound.org/embed/sound/iframe/' + x + '/simple/medium_no_info/' }}" width="200" height="80"></iframe>
-
-    </div>
-
-  </div>
-
-
-  <p class"credits">experimental client for the <a href="http://freesound.org/docs/api/" target="_blank">freesound API</a> | <a href="http://ariane.stolfi.org" target="_blank">AS 2017</a></p>
 </section>

@@ -84,7 +84,7 @@ sound.controls = 'controls';
 sound.src      = itemsrc;
 sound.type     = 'audio/mpeg';
 //put element on playlist
-$('#playlist').prepend(sound);
+$('#audios').prepend(sound);
 sound.play();
 
 }
