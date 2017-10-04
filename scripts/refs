@@ -40,3 +40,12 @@ ufsb
 https://sig.ufsb.edu.br/sigrh/public/home.jsf
 http://www.ufsb.edu.br/wp-content/uploads/2017/09/UFSB-EditalConcursoDocente2017-FINAL-2-1.pdf
 
+
+
+              <div ng-repeat="item in results | array | orderBy:'duration'" class="result" id="{{'#' + item.id}}" ng-click="play('{{item.previews['preview-hq-mp3']}}', {{item.id}}, {{item.images['spectral_m']}})">
+
+                    <img class="smallimg" ng-src="{{item.images['spectral_m']}}"/><br/>
+                    <span class="info">{{item.duration | sectime | date:'mm:ss'}} | {{item.name}} </span> <br/>
+
+              </div>
+

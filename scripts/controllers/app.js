@@ -68,11 +68,56 @@ $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
 
 app.directive('ngMain', function() {
   return {
-
+    
     templateUrl: 'parts/query.html'
     }
   
 });
+
+app.directive ('assPlayer', function(){
+
+    return {
+    restrict: 'E',
+    transclude: true,
+    scope: {audiodata: '=audiodata'},    
+    templateUrl: 'parts/ass-player.html',
+    link: function ($scope) {
+        //console.log($scope.freesound);
+    var req = {
+        method: 'GET',
+        url: 'http://www.freesound.org/apiv2/sounds/' + $scope.audiodata + '/?fields=id,name,previews,images,duration' + '&token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI',
+        headers: {
+        'Content-Type': 'application/json'
+        }
+    };
+
+    $.ajax(req).
+      then(function(response) {
+        // when the response is available
+        //console.log(response);
+
+      $scope.$apply(function () {
+          $scope.response = response;
+          $scope.freesound = response.results;
+      });
+      }, function(response) {
+        // error.
+        
+        //ok
+      }, function(response) {
+        // error.
+
+      });
+
+},
+
+    }
+});
+
+app.directive('loadedsounds', function(){
+
+});
+
 
 app.directive('ngMain2', function() {
   return {

@@ -1,9 +1,8 @@
-
 - remove undefined items
 - spectrogram player
 - slider
 - size difference in the spectrums
-- recorder
+-search and record
 
 
 made
@@ -12,6 +11,8 @@ made
 - move player to left side
 - cellphone interface
 - sort items by duration
+- recorder
+
 
 
 
