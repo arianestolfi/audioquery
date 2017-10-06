@@ -94,11 +94,12 @@ app.directive ('assPlayer', function(){
     $.ajax(req).
       then(function(response) {
         // when the response is available
-        //console.log(response);
 
       $scope.$apply(function () {
-          $scope.response = response;
-          $scope.freesound = response.results;
+          $scope.freesound = response;
+                  console.log($scope.freesound);
+
+
       });
       }, function(response) {
         // error.

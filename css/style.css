@@ -392,7 +392,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 
 
-/* cellphone version */
+/* cellphone version 
 @media screen and (max-width: 600px) {
 
     section {
@@ -428,7 +428,7 @@ input[type=range]:focus::-ms-fill-upper {
         height: auto;
     }
 }
-
+*/
 /* recorder */
 #recList a {
     font-size: 10px;
