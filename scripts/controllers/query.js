@@ -2,9 +2,10 @@ app.controller('queryController', ['$scope', '$window', '$http', '$location', '$
 
 
 var query = $scope.query;
-
-var audioCtx = new AudioContext();
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+var audioCtx = new window.AudioContext();
 var gainNode = audioCtx.createGain();
+
 
 $scope.recordings = false;
 
