@@ -1,4 +1,4 @@
-app.controller('queryController', ['$scope', '$window', '$http', '$location', '$filter', function ($scope, $window, $http, $location, $filter ) {
+app.controller('queryController', ['$scope', '$window', '$http', '$location', '$filter', '$sce', function ($scope, $window, $http, $location, $filter, $sce ) {
 
 
 var query = $scope.query;
@@ -20,7 +20,9 @@ $scope.$watch('query', function() {
     });
 
 
-
+$scope.trustSrc = function(src) {
+    return $sce.trustAsResourceUrl(src);
+  }
 
 $scope.singlequery = function(soundid) {
 

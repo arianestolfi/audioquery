@@ -1,6 +1,7 @@
 var app = angular.module('app', [
     'ngRoute',
-    'ngTouch'
+    'ngTouch',
+    'ngSanitize'
 
 ]).config(function($sceProvider){
     $sceProvider.enabled(false);
@@ -98,8 +99,7 @@ app.directive ('assPlayer', function(){
       $scope.$apply(function () {
           $scope.freesound = response;
                   console.log($scope.freesound);
-
-
+                  $scope.soundsrc = $scope.freesound.previews['preview-hq-mp3'];
       });
       }, function(response) {
         // error.
@@ -115,7 +115,7 @@ app.directive ('assPlayer', function(){
     }
 });
 
-app.directive('loadedsounds', function(){
+app.directive('audiosource', function(){
 
 });
 
@@ -170,7 +170,11 @@ app.filter('array', function() {
   };
 });
 
-
+app.filter("trustUrl", ['$sce', function ($sce) {
+return function (recordingUrl) {
+return $sce.trustAsResourceUrl(recordingUrl);
+};
+}]);
 
 
 function findinarray(arraytosearch, key, valuetosearch) {

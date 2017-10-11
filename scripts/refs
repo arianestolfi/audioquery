@@ -50,6 +50,32 @@ http://www.ufsb.edu.br/wp-content/uploads/2017/09/UFSB-EditalConcursoDocente2017
               </div>
 
 
+
+//// to load the audio objects
+app.directive('audios', function($sce) {
+  return {
+    restrict: 'A',
+    scope: { code:'=' },
+    replace: true,
+    template: '<audio ng-src="{{url}}" controls></audio>',
+    link: function (scope) {
+        scope.$watch('code', function (newVal, oldVal) {
+           if (newVal !== undefined) {
+               scope.url = $sce.trustAsResourceUrl("/data/media/" + newVal);
+           }
+        });
+    }
+  };
+});
+
+Then on the template I used it like so:
+
+<div ng-repeat="audio in event.audios">
+    <div audios code="audio"></div>
+</div>
+
+
+
               reserch by design Design:cultural probes
-              
+
 
