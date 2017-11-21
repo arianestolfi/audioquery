@@ -26,7 +26,7 @@ function addLeadingZeros (n, length)
 //testController end  
 
 //prevent reloading of page when changing adress
-app.run(['$route', '$rootScope', '$location', function ($route, $rootScope, $location) {
+app.run(['$route', '$location', '$rootScope', function ($route, $location, $rootScope) {
         var original = $location.path;
         $location.path = function (path, reload) {
             if (reload === false) {
@@ -58,7 +58,7 @@ app.config(function ($routeProvider, $locationProvider, $httpProvider) {
     
             //$locationProvider.html5Mode(true);
 
-    
+  //headers http  
 $httpProvider.defaults.useXDomain = true;
 $httpProvider.defaults.withCredentials = true;
 delete $httpProvider.defaults.headers.common["X-Requested-With"];
@@ -75,6 +75,7 @@ app.directive('ngMain', function() {
   
 });
 
+//custom player for audioquery
 app.directive ('assPlayer', function(){
 
     return {
@@ -83,15 +84,16 @@ app.directive ('assPlayer', function(){
     scope: {audiodata: '=audiodata'},    
     templateUrl: 'parts/ass-player.html',
     link: function ($scope) {
-        //console.log($scope.freesound);
     var req = {
         method: 'GET',
-        url: 'http://www.freesound.org/apiv2/sounds/' + $scope.audiodata + '/?fields=id,name,previews,images,duration' + '&token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI',
+        url: 'http://www.freesound.org/apiv2/sounds/' + $scope.audiodata.id + '/?fields=id,name,previews,images,duration' + '&token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI',
         headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
         }
     };
 
+    console.log($scope.audiodata);
     $.ajax(req).
       then(function(response) {
         // when the response is available
@@ -100,7 +102,41 @@ app.directive ('assPlayer', function(){
           $scope.freesound = response;
                   console.log($scope.freesound);
                   $scope.soundsrc = $scope.freesound.previews['preview-hq-mp3'];
+                      
       });
+
+    //console.log($scope.audiodata);
+
+        //confere se o som é novo ou existente
+
+    // var itemid = $scope.freesound.id; 
+    // var itemsrc = $scope.freesound.previews['preview-hq-mp3'];
+    //   //create audio element  
+    //   var sound      = document.createElement('audio');
+    //   sound.crossOrigin = "anonymous";
+    //   sound.id       = 'aud' + itemid;
+    //   sound.controls = 'controls';
+    //   //sound.loop = 'loop';
+    //   sound.src      = itemsrc;
+    //   sound.type     = 'audio/mpeg';
+    //   //put element on playlist
+    //   var container = '#sound' + itemid
+    //   $(container).prepend(sound);
+      
+    //   sound.play();
+
+
+//binding new objects to audio context
+
+
+//var source = audioCtx.createMediaElementSource(sound);
+//source.connect(gainNode);
+//gainNode.connect(audioCtx.destination)
+
+      
+
+
+
       }, function(response) {
         // error.
         
@@ -109,6 +145,8 @@ app.directive ('assPlayer', function(){
         // error.
 
       });
+
+
 
 },
 

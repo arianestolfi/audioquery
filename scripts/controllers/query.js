@@ -1,6 +1,9 @@
 app.controller('queryController', ['$scope', '$window', '$http', '$location', '$filter', '$sce', function ($scope, $window, $http, $location, $filter, $sce ) {
 
 
+var sounds = [];
+$scope.sounds = sounds;
+
 var query = $scope.query;
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var audioCtx = new window.AudioContext();
@@ -93,13 +96,38 @@ var req = {
 var queryString = $location.path();
 
 if (queryString) {
-  var sounds = queryString.split("=");
-  var sounds = sounds[1];
-  var sounds = sounds.split(",");
-  $scope.sounds = sounds;
+  var ids = queryString.split("=");
+  var ids = ids[1];
+  var ids = ids.split(",");
+
+  for (var i = 0; i < ids.length;i++) {
+    $scope.sounds.push({id: ids[i], newsound: 0});
+  }  
+  //$scope.sounds = sounds;
   console.log(sounds);
 } 
 
+
+$scope.player = function(itemid) {
+var curadress = $location.path();
+if (curadress) {
+  var partsadress = curadress.split("=");
+  var adress = partsadress[0] + "=" + itemid + ',' + partsadress[1];
+} else {
+  var adress = 'sounds=' + itemid;
+}
+
+//change url
+$location.path(adress, false);
+
+//adding to sounds
+$scope.sounds.push({id: itemid, newsound: 1});
+
+//tell the sound to play
+  //var played = document.getElementById("aud" + itemid);
+    //played.play();
+
+}
 
 
 
@@ -120,9 +148,7 @@ $location.path(adress, false);
 
 //create audio element  
 var sound      = document.createElement('audio');
-
 sound.crossOrigin = "anonymous";
-
 sound.id       = 'aud' + itemid;
 sound.controls = 'controls';
 //sound.loop = 'loop';
@@ -130,14 +156,15 @@ sound.src      = itemsrc;
 sound.type     = 'audio/mpeg';
 //put element on playlist
 $('#audios').prepend(sound);
+//if (loaded) {} else {
 sound.play();
+//}
 
 //binding new objects to sudio context
 
 var source = audioCtx.createMediaElementSource(sound);
 source.connect(gainNode);
 gainNode.connect(audioCtx.destination)
-
 }
 
 //recorder from thomas vassalo

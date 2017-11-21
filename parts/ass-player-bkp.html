@@ -1,0 +1,11 @@
+<div id="sound{{freesound.id}}">
+
+<img ng-if="freesound" ng-src="{{freesound.images['spectral_m']}}" />
+
+<audio ng-if="freesound" id="audio{{freesound.id}}" controls>
+	<source ng-src="{{freesound.previews['preview-hq-mp3']}}" type="audio/mpeg"></source>
+</audio>
+
+<!--
+-->
+</div>
