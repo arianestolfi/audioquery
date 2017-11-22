@@ -89,8 +89,8 @@ section {
 }
 
 .miniimg {
-    width: 150px;
-    height: 25px;
+    width: 200px;
+    height: 50px;
 }
 
 .result {
@@ -125,7 +125,7 @@ audio {
 }
 
 #audios {
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 #list {
@@ -137,6 +137,10 @@ audio {
     background-color: #fff;
     height: 100%;
 }
+
+
+
+
 
 #menu {
     width: 100%;
@@ -222,7 +226,11 @@ audio {
 .buttons {
 margin-bottom: 5px;
  position: fixed;
- padding-left: 5px;   
+ padding-left: 5px; 
+ z-index: 10;
+ background-color: #fff;
+ width: 195px; 
+ outline: 1px solid black; 
 }
 
 
@@ -448,4 +456,10 @@ input[type=range]:focus::-ms-fill-upper {
     overflow: hidden;
     float: left;
     margin: 0 10px 10px 0;
+    position: relative;
+}
+
+.loopbtn {
+    position: absolute;
+    top: 0px;
 }

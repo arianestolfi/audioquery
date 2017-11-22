@@ -21,7 +21,9 @@
 
   <div id="audios">
 
-
+           <div ng-repeat="x in sounds track by $index" >
+               <ass-player audiodata="x" ></ass-player>
+            </div>
   </div>
 
 
@@ -57,9 +59,7 @@
               <div id="preloaded">
 
 
-           <div ng-repeat="x in sounds track by $index" >
-               <ass-player audiodata="x" ></ass-player>
-            </div>
+
 
      <!--<iframe ng-if="sounds" ng-repeat="x in sounds track by $index" frameborder="0" scrolling="no" src="{{'https://www.freesound.org/embed/sound/iframe/' + x + '/simple/medium_no_info/' }}" width="200" height="80"></iframe>-->
 

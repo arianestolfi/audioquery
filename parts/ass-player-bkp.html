@@ -1,11 +1,16 @@
-<div id="sound{{freesound.id}}">
+<div class="player" id="sound{{freesound.id}}" ng-switch on="audiodata.newsound">      
+		<audio ng-if="freesound" ng-switch-when="1" id="audio{{freesound.id}}" controls autoplay>
+			<source ng-src="{{freesound.previews['preview-hq-mp3']}}" type="audio/mpeg"></source>
+		</audio>
+		<audio ng-switch-default ng-if="freesound" id="audio{{freesound.id}}" controls ng-attr="{{isnew}}">
+			<source ng-src="{{freesound.previews['preview-hq-mp3']}}" type="audio/mpeg"></source>
+		</audio>
 
-<img ng-if="freesound" ng-src="{{freesound.images['spectral_m']}}" />
-
-<audio ng-if="freesound" id="audio{{freesound.id}}" controls>
-	<source ng-src="{{freesound.previews['preview-hq-mp3']}}" type="audio/mpeg"></source>
-</audio>
-
-<!--
--->
+    <input type="hidden" id="hid{{freesound.id}}" value=audio{{freesound.id}}>
+		<script type="text/javascript">
+		//var myAudio = document.querySelector('.player.audio');
+		//myAudio.connect(gainNode);
+		//gainNode.connect(audioCtx.destination)
+		</script>
+<img class="smallimg" ng-src="{{freesound.images['spectral_l']}}" />
 </div>

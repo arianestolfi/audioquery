@@ -83,10 +83,10 @@ app.directive ('assPlayer', function(){
     transclude: true,
     scope: {audiodata: '=audiodata'},    
     templateUrl: 'parts/ass-player.html',
-    link: function ($scope) {
+    link: function ($scope, element, attribute) {
     var req = {
         method: 'GET',
-        url: 'http://www.freesound.org/apiv2/sounds/' + $scope.audiodata.id + '/?fields=id,name,previews,images,duration' + '&token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI',
+        url: 'https://freesound.org/apiv2/sounds/' + $scope.audiodata.id + '/?fields=id,name,previews,images,duration' + '&token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI',
         headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -105,6 +105,36 @@ app.directive ('assPlayer', function(){
                       
       });
 
+      $scope.loop = false;
+    var itemid = $scope.freesound.id; 
+    var itemsrc = $scope.freesound.previews['preview-hq-mp3'];
+    //   //create audio element  
+    console.log($scope.audiodata.newsound);
+    var sound      = document.createElement('audio');
+    sound.crossOrigin = "anonymous";
+    sound.id       = 'aud' + itemid;
+    sound.controls = 'controls';
+    //   //sound.loop = 'loop';
+    sound.src      = itemsrc;
+    sound.type     = 'audio/mpeg';
+    //   //put element on playlist
+    var container = '#sound' + itemid;
+    $(container).prepend(sound);
+      if ($scope.audiodata.newsound == 1) {
+        sound.autoplay = 'autoplay';
+
+      }
+    if ($scope.loop == true) {
+        sound.loop ='loop';
+    }  
+
+    console.log($scope.loop);
+
+    var msource = audioCtx.createMediaElementSource(sound);
+    msource.connect(gainNode);
+    sources.push(msource);
+    
+    
     //console.log($scope.audiodata);
 
         //confere se o som é novo ou existente
@@ -164,7 +194,11 @@ app.directive('ngMain2', function() {
   }
 });
 
-
+app.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});
 
 app.filter('numberFixedLen', function () {
     return function (a, b) {

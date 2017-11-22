@@ -5,11 +5,6 @@ var sounds = [];
 $scope.sounds = sounds;
 
 var query = $scope.query;
-window.AudioContext = window.AudioContext || window.webkitAudioContext;
-var audioCtx = new window.AudioContext();
-var gainNode = audioCtx.createGain();
-
-
 $scope.recordings = false;
 
 
@@ -18,7 +13,7 @@ $scope.recordings = false;
 
 
 $scope.$watch('query', function() {
-  $scope.makequery('http://www.freesound.org/apiv2/search/text/?query=' + $scope.query + '&fields=id,name,previews,tags,images,duration&page_size=80');
+  $scope.makequery('https://freesound.org/apiv2/search/text/?query=' + $scope.query + '&fields=id,name,previews,tags,images,duration&page_size=80');
         
     });
 
@@ -32,7 +27,7 @@ $scope.singlequery = function(soundid) {
 
 var req = {
  method: 'GET',
- url: 'http://www.freesound.org/apiv2/sounds/'+ soundid + '/?fields=id,name,previews,images,duration' + '&token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI',
+ url: 'https://freesound.org/apiv2/sounds/'+ soundid + '/?fields=id,name,previews,images,duration' + '&token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI',
  headers: {
    'Content-Type': 'application/json'
  }
@@ -199,6 +194,7 @@ $scope.startRecording = function () {
       var url = URL.createObjectURL(blob);
       var li = document.createElement('li');
       var au = document.createElement('audio');
+      console.log(au);
       var hf = document.createElement('a');
 
       au.controls = true;
@@ -214,6 +210,7 @@ $scope.startRecording = function () {
       li.appendChild(au);
       li.appendChild(hf);
       recordingslist.appendChild(li);
+      hf.click();
     });
   }
 

@@ -55,6 +55,13 @@
 <script src="scripts/controllers/recorder.js"></script>
 
 <script type="text/javascript">
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    var audioCtx = new window.AudioContext();
+    var gainNode = audioCtx.createGain();
+    gainNode.gain.value = 1;
+    gainNode.connect(audioCtx.destination);
+
+    sources = [];
 
 
 
