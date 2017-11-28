@@ -1,6 +1,7 @@
 <div class="player" id="sound{{freesound.id}}" ng-switch on="audiodata.newsound">      
 
 <!--<input class="loopbtn" type="checkbox" ng-model="loop">-->
+<a class="loopbtn fa fa-rotate-right" ng-class="{'disabled': loop.booleanVal}" ng-click="loop.booleanVal = !loop.booleanVal"></a>
 	
 <img class="miniimg" ng-src="{{freesound.images['spectral_m']}}" />
 </div>

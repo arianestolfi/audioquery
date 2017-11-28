@@ -90,7 +90,7 @@ section {
 
 .miniimg {
     width: 200px;
-    height: 50px;
+    height: 25px;
 }
 
 .result {
@@ -462,4 +462,9 @@ input[type=range]:focus::-ms-fill-upper {
 .loopbtn {
     position: absolute;
     top: 0px;
+    color: #fff;
+}
+
+.disabled {
+    color: #666;
 }

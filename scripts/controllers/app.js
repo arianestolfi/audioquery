@@ -1,6 +1,7 @@
 var app = angular.module('app', [
     'ngRoute',
     'ngTouch',
+    'ngAudio',
     'ngSanitize'
 
 ]).config(function($sceProvider){
@@ -102,31 +103,43 @@ app.directive ('assPlayer', function(){
           $scope.freesound = response;
                   console.log($scope.freesound);
                   $scope.soundsrc = $scope.freesound.previews['preview-hq-mp3'];
+                  // var sound = ngAudio.load($scope.freesound.previews['preview-hq-mp3']);
                       
       });
 
-      $scope.loop = false;
-    var itemid = $scope.freesound.id; 
+       $scope.loop = false;
+     var itemid = $scope.freesound.id; 
     var itemsrc = $scope.freesound.previews['preview-hq-mp3'];
-    //   //create audio element  
-    console.log($scope.audiodata.newsound);
+       //create audio element  
+    // console.log($scope.audiodata.newsound);
     var sound      = document.createElement('audio');
     sound.crossOrigin = "anonymous";
     sound.id       = 'aud' + itemid;
     sound.controls = 'controls';
-    //   //sound.loop = 'loop';
+     //sound.loop = 'loop';
     sound.src      = itemsrc;
     sound.type     = 'audio/mpeg';
-    //   //put element on playlist
-    var container = '#sound' + itemid;
-    $(container).prepend(sound);
+     //put element on playlist
+    element.prepend(sound);
       if ($scope.audiodata.newsound == 1) {
         sound.autoplay = 'autoplay';
 
-      }
-    if ($scope.loop == true) {
-        sound.loop ='loop';
-    }  
+       }
+       
+       $scope.$watch('loop', function(newValue, oldValue) {
+                if (newValue)
+                    console.log($scope.loop.booleanVal);
+                sound.addEventListener('ended', function() {
+                    if ($scope.loop.booleanVal) {
+                        this.currentTime = 0;
+                        this.play();
+                    }
+
+}, false);
+            }, true);
+
+
+
 
     console.log($scope.loop);
 
@@ -135,35 +148,6 @@ app.directive ('assPlayer', function(){
     sources.push(msource);
     
     
-    //console.log($scope.audiodata);
-
-        //confere se o som é novo ou existente
-
-    // var itemid = $scope.freesound.id; 
-    // var itemsrc = $scope.freesound.previews['preview-hq-mp3'];
-    //   //create audio element  
-    //   var sound      = document.createElement('audio');
-    //   sound.crossOrigin = "anonymous";
-    //   sound.id       = 'aud' + itemid;
-    //   sound.controls = 'controls';
-    //   //sound.loop = 'loop';
-    //   sound.src      = itemsrc;
-    //   sound.type     = 'audio/mpeg';
-    //   //put element on playlist
-    //   var container = '#sound' + itemid
-    //   $(container).prepend(sound);
-      
-    //   sound.play();
-
-
-//binding new objects to audio context
-
-
-//var source = audioCtx.createMediaElementSource(sound);
-//source.connect(gainNode);
-//gainNode.connect(audioCtx.destination)
-
-      
 
 
 
@@ -171,9 +155,6 @@ app.directive ('assPlayer', function(){
         // error.
         
         //ok
-      }, function(response) {
-        // error.
-
       });
 
 
@@ -259,4 +240,7 @@ function findinarray(arraytosearch, key, valuetosearch) {
     }
     return null;
     }
+
+
+
 
