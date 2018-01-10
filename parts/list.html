@@ -21,8 +21,9 @@
 
   <div id="audios">
 
-           <div ng-repeat="x in sounds track by $index" >
-               <ass-player audiodata="x" ></ass-player>
+           <div ng-repeat="x in sounds as sound track by $index" class="players">
+               <ass-player audiodata="x" ></ass-player>   
+               <!--<button ng-click="sound.splice($index,1)">X</button>  -->    
             </div>
   </div>
 
@@ -45,7 +46,7 @@
  <div id="results">
                 <div>
                       
-              <div ng-repeat="item in results | array | orderBy:'duration'" class="result" id="{{'#' + item.id}}" ng-click="player({{item.id}})">
+              <div ng-repeat="item in results | array | orderBy:'duration'" class="result" id="{{'#' + item.id}}" ng-click="player({{item.id}}); logDownload()" analytics-on analytics-event="Click" analytics-category="Sounds" analytics-label="item">
 
                     <img class="smallimg" ng-src="{{item.images['spectral_m']}}"/><br/>
                     <span class="info">{{item.duration | sectime | date:'mm:ss'}} | {{item.name}} </span> <br/>

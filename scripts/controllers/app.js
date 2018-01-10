@@ -2,7 +2,9 @@ var app = angular.module('app', [
     'ngRoute',
     'ngTouch',
     'ngAudio',
-    'ngSanitize'
+    'ngSanitize',
+    'angulartics',
+    'angulartics.google.analytics'
 
 ]).config(function($sceProvider){
     $sceProvider.enabled(false);
