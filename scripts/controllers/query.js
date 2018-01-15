@@ -126,7 +126,7 @@ $scope.sounds.push({id: itemid, newsound: 1});
 
 $scope.logDownload = function () {
     $window.ga('send', 'event', 'Download', 'File Name'); //This would log a GA Event
-    $location.path('your path to download the file'); //use this if you are linking to an angular route
+    //$location.path('your path to download the file'); //use this if you are linking to an angular route
 };
 
 $scope.play = function(itemsrc, itemid) {
