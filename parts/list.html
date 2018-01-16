@@ -21,8 +21,8 @@
 
   <div id="audios">
 
-           <div ng-repeat="x in sounds as sound track by $index" class="players">
-               <ass-player audiodata="x" ></ass-player>   
+           <div ng-repeat="x in sounds as sound track by $index " class="players">
+               <ass-player audiodata="x" order="{{$index}}"></ass-player>   
                <!--<button ng-click="sound.splice($index,1)">X</button>  -->    
             </div>
   </div>

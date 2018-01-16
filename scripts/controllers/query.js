@@ -54,6 +54,8 @@ var req = {
 
 }
 
+
+
 $scope.makequery = function(urlbase) {
 
 
@@ -91,21 +93,26 @@ var req = {
 var queryString = $location.path();
 
 if (queryString) {
+
   var ids = queryString.split("=");
   var ids = ids[1];
-  var ids = ids.split(",");
+
+  if (ids) {
+     var ids = ids.split(",");
 
   for (var i = 0; i < ids.length;i++) {
     $scope.sounds.push({id: ids[i], newsound: 0});
   }  
   //$scope.sounds = sounds;
-  console.log(sounds);
+  console.log(sounds); 
+  }
+
 } 
 
 
 $scope.player = function(itemid) {
 var curadress = $location.path();
-if (curadress) {
+if (curadress ) {
   var partsadress = curadress.split("=");
   var adress = partsadress[0] + "=" + itemid + ',' + partsadress[1];
 } else {
@@ -122,6 +129,21 @@ $scope.sounds.push({id: itemid, newsound: 1});
   //var played = document.getElementById("aud" + itemid);
     //played.play();
 
+
+}
+
+$scope.removeitem = function(index) {
+  //remove item
+  $scope.sounds.splice(index, 1);
+  //construct new url
+  var newadress = $scope.sounds.length > 0 ? 'sounds=' : '';
+  //var newadress = 'sounds=';
+  for (var i = 0; i < $scope.sounds.length; i++) {
+    newadress += (i > 0 ? ',' : '') + $scope.sounds[i].id;
+  }
+  //change url
+  $location.path(newadress, false);
+  //console.log('a');
 }
 
 $scope.logDownload = function () {

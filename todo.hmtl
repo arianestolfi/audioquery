@@ -2,7 +2,14 @@
 - spectrogram player
 - slider
 - size difference in the spectrums
--search and record
+- search and record
+- infinite scroll
+- hide the names
+- filter by license
+
+
+- timestamp + sound playes
+- search term
 
 
 made
@@ -12,6 +19,8 @@ made
 - cellphone interface
 - sort items by duration
 - recorder
+- individual sound volume
+- information on the player
 
 
 
