@@ -149,7 +149,7 @@ app.directive ('assPlayer', ['$rootScope', function($rootScope){
                   //console.log($scope.soundvolume);
                   sound.volume = val;
                   borderval = val + 'px';
-                  angular.element(imgid).css('border', borderval);
+                  
        }
 
 
