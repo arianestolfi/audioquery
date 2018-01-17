@@ -151,22 +151,17 @@ app.directive ('assPlayer', ['$rootScope', function($rootScope){
         }
 
 
-
         $scope.removethis = function() {
           //$scope.$parent.sounds.splice(index, 1);
           $scope.$parent.removeitem(audiodata.playerid);
+          $scope.$parent.logger2('removed: ' + $scope.freesound.name);
         }
 
-
-        console.log($scope.loop);
+        //console.log($scope.loop);
 
         var msource = audioCtx.createMediaElementSource(sound);
         msource.connect(gainNode);
         sources.push(msource);
-
-
-
-
 
       }, function(response) {
         // error.

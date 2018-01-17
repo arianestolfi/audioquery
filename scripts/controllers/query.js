@@ -138,6 +138,23 @@ $scope.player = function(itemid) {
 
 }
 
+//to write logs in the console
+$scope.logger = function(message) {
+  var marker = 'audioquery:';
+  var timeStamp = Math.floor(Date.now() / 1000);
+  var timeStamp = "[" + timeStamp + "] ";
+  console.log(timeStamp + '' + marker + 'query: ' + $scope.query + message);
+
+}
+
+$scope.logger2 = function(message) {
+  var marker = 'audioquery:';
+  var timeStamp = Math.floor(Date.now() / 1000);
+  var timeStamp = "[" + timeStamp + "] ";
+  console.log(timeStamp + '' + marker + message);
+
+}
+
 $scope.removeitem = function(playerid) {
   //remove item
   // $scope.sounds.splice(index, 1);
