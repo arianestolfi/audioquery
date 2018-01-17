@@ -130,6 +130,18 @@ app.directive ('assPlayer', ['$rootScope', function($rootScope){
           if (audiodata.newsound === 1) {
             sound.autoplay = 'autoplay';
           }
+          counter=0;
+          sound.onplay = function() {
+            if(!$scope.loop){
+              $scope.$parent.logger2('played: ' + $scope.freesound.name);
+            }
+            else{
+              if(counter<1){
+                $scope.$parent.logger2('played: ' + $scope.freesound.name);
+              }
+              counter++;
+            }
+          }
 
           $scope.$watch('loop', function(newValue, oldValue) {
           // if (newValue)
@@ -138,6 +150,10 @@ app.directive ('assPlayer', ['$rootScope', function($rootScope){
               if ($scope.loop.booleanVal) {
                 this.currentTime = 0;
                 this.play();
+                
+              }
+              else{
+                counter=0;
               }
 
           }, false);
