@@ -12,8 +12,6 @@
 	<span>vol: {{soundvolume | number: 2}} </span><input type="range" min="0" max="1" step="any" id="slider-{{freesound.id}}" ng-model="soundvolume" ng-change="setvolume(soundvolume)"></input>  </p>
 
 
-
-
 <img class="smallimg" id="img{{freesound.id}}" ng-src="{{freesound.images['spectral_m']}}" style="opacity:{{soundvolume / 2 + 0.5}};z-index:1" ondragstart="return false; "/>
 <div id="audio{{order}}"></div> 
 </div>

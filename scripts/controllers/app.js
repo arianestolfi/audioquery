@@ -147,9 +147,7 @@ app.directive ('assPlayer', ['$rootScope', function($rootScope){
 
        $scope.setvolume = function(val){
                   //console.log($scope.soundvolume);
-                  sound.volume = val;
-                  borderval = val + 'px';
-                  
+                  sound.volume = val;                  
        }
 
 

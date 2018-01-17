@@ -7,6 +7,8 @@ $scope.sounds = sounds;
 var query = $scope.query;
 $scope.recordings = false;
 
+$scope.about= 'estreito';
+
 
 //$scope.query = 'gun';
 
