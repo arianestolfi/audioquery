@@ -4,6 +4,9 @@ app.controller('queryController', ['$scope', '$window', '$http', '$location', '$
 var sounds = [];
 $scope.sounds = sounds;
 
+// Counter used to generate new player ids
+var playersCounter = 0;
+
 var query = $scope.query;
 $scope.recordings = false;
 
@@ -17,24 +20,24 @@ $scope.about= 'estreito';
 $scope.$watch('query', function() {
   $scope.makequery('https://freesound.org/apiv2/search/text/?query=' + $scope.query + '&fields=id,name,previews,tags,images,duration&page_size=40');
 
-    });
+});
 
 
 $scope.trustSrc = function(src) {
     return $sce.trustAsResourceUrl(src);
-  }
+}
 
 $scope.singlequery = function(soundid) {
 
 
-var req = {
- method: 'GET',
- url: 'https://freesound.org/apiv2/sounds/'+ soundid + '/?fields=id,name,previews,images,duration' + '&token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI',
- headers: {
-   'Content-Type': 'application/json'
- }
+  var req = {
+    method: 'GET',
+    url: 'https://freesound.org/apiv2/sounds/'+ soundid + '/?fields=id,name,previews,images,duration' + '&token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI',
+    headers: {
+      'Content-Type': 'application/json'
+    }
 
-};
+  };
 
   $.ajax(req).
       then(function(response) {
@@ -42,8 +45,8 @@ var req = {
         console.log(response);
 
       $scope.$apply(function () {
-          $scope.response = response;
-          $scope.sound = response.results;
+        $scope.response = response;
+        $scope.sound = response.results;
       });
       }, function(response) {
         // error.
@@ -61,14 +64,14 @@ var req = {
 $scope.makequery = function(urlbase) {
 
 
-var req = {
- method: 'GET',
- url: urlbase + '&token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI',
- headers: {
-   'Content-Type': 'application/json'
- }
+  var req = {
+   method: 'GET',
+   url: urlbase + '&token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI',
+   headers: {
+     'Content-Type': 'application/json'
+   }
 
-};
+  };
 
   $.ajax(req).
       then(function(response) {
@@ -103,7 +106,8 @@ if (queryString) {
      var ids = ids.split(",");
 
   for (var i = 0; i < ids.length;i++) {
-    $scope.sounds.push({id: ids[i], newsound: 0});
+    var playerid = playersCounter++;
+    $scope.sounds.push({id: ids[i], newsound: 0, playerid: playerid++});
   }
   //$scope.sounds = sounds;
   console.log(sounds);
@@ -111,84 +115,89 @@ if (queryString) {
 
 }
 
-
 $scope.player = function(itemid) {
-var curadress = $location.path();
-if (curadress ) {
-  var partsadress = curadress.split("=");
-  var adress = partsadress[0] + "=" + itemid + ',' + partsadress[1];
-} else {
-  var adress = 'sounds=' + itemid;
+  var playerid = playersCounter++;
+  var curadress = $location.path();
+  if (curadress ) {
+    var partsadress = curadress.split("=");
+    var adress = partsadress[0] + "=" + itemid + ',' + partsadress[1];
+  } else {
+    var adress = 'sounds=' + itemid;
+  }
+
+  //change url
+  $location.path(adress, false);
+
+  //adding to sounds
+  $scope.sounds.unshift({id: itemid, newsound: 1, playerid: playerid});
+
+  //tell the sound to play
+    //var played = document.getElementById("aud" + itemid);
+      //played.play();
+
+
 }
 
-//change url
-$location.path(adress, false);
-
-//adding to sounds
-$scope.sounds.push({id: itemid, newsound: 1});
-
-console.log($scope.sounds);
-
-//tell the sound to play
-  //var played = document.getElementById("aud" + itemid);
-    //played.play();
-
-
-}
-
-$scope.removeitem = function(index) {
+$scope.removeitem = function(playerid) {
   //remove item
-  $scope.sounds.splice(index, 1);
+  // $scope.sounds.splice(index, 1);
+  var newsounds = [];
   //construct new url
   var newadress = $scope.sounds.length > 0 ? 'sounds=' : '';
   //var newadress = 'sounds=';
   for (var i = 0; i < $scope.sounds.length; i++) {
-    newadress += (i > 0 ? ',' : '') + $scope.sounds[i].id;
+    if ($scope.sounds[i].playerid !== playerid) {
+      newsounds.push($scope.sounds[i]);
+      newadress += (i > 0 ? ',' : '') + $scope.sounds[i].id;
+    }
   }
+  //change array
+  $scope.sounds = newsounds;
   //change url
   $location.path(newadress, false);
   //console.log('a');
 }
 
 $scope.logDownload = function () {
-    $window.ga('send', 'event', 'Download', 'File Name'); //This would log a GA Event
-    //$location.path('your path to download the file'); //use this if you are linking to an angular route
+  $window.ga('send', 'event', 'Download', 'File Name'); //This would log a GA Event
+  //$location.path('your path to download the file'); //use this if you are linking to an angular route
 };
 
 $scope.play = function(itemsrc, itemid) {
 
-//verify adress
-var curadress = $location.path();
-if (curadress) {
-  var partsadress = curadress.split("=");
-  var adress = partsadress[0] + "=" + itemid + ',' + partsadress[1];
-} else {
-  var adress = 'sounds=' + itemid;
-}
+  var playerid = playersCounter++;
+  //verify adress
+  var curadress = $location.path();
+  if (curadress) {
+    var partsadress = curadress.split("=");
+    var adress = partsadress[0] + "=" + itemid + ',' + partsadress[1];
+  } else {
+    var adress = 'sounds=' + itemid;
+  }
 
-//change url
-$location.path(adress, false);
+  //change url
+  $location.path(adress, false);
 
 
-//create audio element
-var sound      = document.createElement('audio');
-sound.crossOrigin = "anonymous";
-sound.id       = 'aud' + itemid;
-sound.controls = 'controls';
-//sound.loop = 'loop';
-sound.src      = itemsrc;
-sound.type     = 'audio/mpeg';
-//put element on playlist
-$('#audios').prepend(sound);
-//if (loaded) {} else {
-sound.play();
-//}
+  //create audio element
+  var sound      = document.createElement('audio');
+  sound.crossOrigin = "anonymous";
+  sound.id       = 'aud' + itemid;
+  sound.controls = 'controls';
+  //sound.loop = 'loop';
+  sound.src      = itemsrc;
+  sound.type     = 'audio/mpeg';
+  //put element on playlist
+  $('#audios').prepend(sound);
+  //if (loaded) {} else {
+  sound.play();
+  //}
 
-//binding new objects to sudio context
+  //binding new objects to sudio context
 
-var source = audioCtx.createMediaElementSource(sound);
-source.connect(gainNode);
-gainNode.connect(audioCtx.destination)
+  var source = audioCtx.createMediaElementSource(sound);
+  source.connect(gainNode);
+  gainNode.connect(audioCtx.destination)
 }
 
 //recorder from thomas vassalo

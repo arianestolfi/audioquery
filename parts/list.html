@@ -13,15 +13,15 @@
                     <button ng-hide="!recording" class="next-pag fa fa-stop" ng-click="stopRecording(); recording = false; recordings = true"></button>
 
                     <!--<button class="prev-pag resetpar fa fa-arrow-down" ng-click="moveparnext()"></button>-->
-                      
+
                 </div><br>
 
 
 
   <div id="audios">
 
-           <div ng-repeat="x in sounds track by $index" class="players">
-               <ass-player audiodata="{{x}}" order="{{$index}}"></ass-player>
+           <div ng-repeat="sound in sounds track by sound.playerid" class="players">
+               <ass-player audiodata="sound"></ass-player>
                <!--<button ng-click="sound.splice($index,1)">X</button>  -->
             </div>
   </div>
@@ -43,7 +43,7 @@
               <a ng-hide=""> </a>
               <div id="results">
               <div>
-                      
+
 
               <div ng-repeat="item in results | array | orderBy:'duration'" class="result" id="{{'#' + item.id}}" ng-click="player({{item.id}}); logDownload()" analytics-on analytics-event="Click" analytics-category="Sounds" analytics-label="item">
 
@@ -77,8 +77,8 @@
    <div class="vertical apoio" >about</div>
    <div class="credits">
    <p >experimental client for the <a href="http://freesound.org/docs/api/" target="_blank">freesound API</a> <br/> by <a href="http://ariane.stolfi.org" target="_blank">Ariane Stolfi,</a> 2017</p>
-  <p >To use it, just type the desired search <br/> on the search field. To save your collection <br/>of sounds, just bookmark the url.</p> 
+  <p >To use it, just type the desired search <br/> on the search field. To save your collection <br/>of sounds, just bookmark the url.</p>
 </div>
-    </div> 
+    </div>
 
 </section>

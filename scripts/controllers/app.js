@@ -85,13 +85,11 @@ app.directive ('assPlayer', ['$rootScope', function($rootScope){
     restrict: 'E',
     //transclude: true,
     scope: {
-      'audiodata' : '@',
-      order: '@'
+      'audiodata' : '='
     },
     templateUrl: 'parts/ass-player.html',
     link: function ($scope, element, attribute) {
-      var audiodata = JSON.parse($scope.audiodata);
-      console.log(audiodata);
+      var audiodata = $scope.audiodata;
       var req = {
         method: 'GET',
         url: 'https://freesound.org/apiv2/sounds/' + audiodata.id + '/?fields=id,name,previews,images,duration' + '&token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI',
@@ -101,22 +99,17 @@ app.directive ('assPlayer', ['$rootScope', function($rootScope){
         }
       };
 
-      //console.log($scope.audiodata);
-      console.log(audiodata);
-      console.log($scope.order);
       $.ajax(req).
         then(function(response) {
         // when the response is available
 
           $scope.$apply(function () {
             $scope.freesound = response;
-            console.log($scope.freesound);
             $scope.soundsrc = $scope.freesound.previews['preview-hq-mp3'];
             // var sound = ngAudio.load($scope.freesound.previews['preview-hq-mp3']);
 
           });
 
-          console.log($scope.order);
           $scope.loop = false;
           $scope.soundvolume = 1;
           var itemid = $scope.freesound.id;
@@ -124,10 +117,10 @@ app.directive ('assPlayer', ['$rootScope', function($rootScope){
           //create audio element
           // console.log($scope.audiodata.newsound);
           var sound      = document.createElement('audio');
-          var imgid = '#img' + itemid;
-          var divid = 'audio' + $scope.order;
+          var imgid = '#img' + audiodata.playerid;
+          var divid = 'audio' + audiodata.playerid;
           sound.crossOrigin = "anonymous";
-          sound.id       = 'aud' + itemid;
+          sound.id       = 'aud' + audiodata.playerid;
           sound.controls = 'controls';
           //sound.loop = 'loop';
           sound.src      = itemsrc;
@@ -159,9 +152,9 @@ app.directive ('assPlayer', ['$rootScope', function($rootScope){
 
 
 
-        $scope.removethis = function(index) {
+        $scope.removethis = function() {
           //$scope.$parent.sounds.splice(index, 1);
-          $scope.$parent.removeitem();
+          $scope.$parent.removeitem(audiodata.playerid);
         }
 
 
