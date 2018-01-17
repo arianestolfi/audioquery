@@ -26,7 +26,7 @@ function addLeadingZeros (n, length)
 
 
 
-//testController end  
+//testController end
 
 //prevent reloading of page when changing adress
 app.run(['$route', '$location', '$rootScope', function ($route, $location, $rootScope) {
@@ -54,63 +54,110 @@ app.config(function ($routeProvider, $locationProvider, $httpProvider) {
             templateUrl: 'parts/busca.html',
             controller: 'queryController'
         }).otherwise({
-        
+
         templateUrl: 'parts/list.html',
             controller: 'queryController'
     });
-    
+
             //$locationProvider.html5Mode(true);
 
-  //headers http  
+  //headers http
 $httpProvider.defaults.useXDomain = true;
 $httpProvider.defaults.withCredentials = true;
 delete $httpProvider.defaults.headers.common["X-Requested-With"];
 $httpProvider.defaults.headers.common["Accept"] = "application/json";
 $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
-    
+
   });
 
 app.directive('ngMain', function() {
   return {
-    
+
     templateUrl: 'parts/query.html'
     }
-  
+
 });
 
 //custom player for audioquery
 app.directive ('assPlayer', ['$rootScope', function($rootScope){
 
-    return {
+  return {
     restrict: 'E',
     //transclude: true,
-    scope: {'audiodata' : '=audiodata',
-    order: '@'},    
+    scope: {
+      'audiodata' : '@',
+      order: '@'
+    },
     templateUrl: 'parts/ass-player.html',
     link: function ($scope, element, attribute) {
-    var req = {
+      var audiodata = JSON.parse($scope.audiodata);
+      console.log(audiodata);
+      var req = {
         method: 'GET',
-        url: 'https://freesound.org/apiv2/sounds/' + $scope.audiodata.id + '/?fields=id,name,previews,images,duration' + '&token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI',
+        url: 'https://freesound.org/apiv2/sounds/' + audiodata.id + '/?fields=id,name,previews,images,duration' + '&token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI',
         headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         }
-    };
+      };
 
-    //console.log($scope.audiodata);
-     //console.log($scope.order);
-    $.ajax(req).
-      then(function(response) {
+      //console.log($scope.audiodata);
+      console.log(audiodata);
+      console.log($scope.order);
+      $.ajax(req).
+        then(function(response) {
         // when the response is available
 
-      $scope.$apply(function () {
-          $scope.freesound = response;
-                  console.log($scope.freesound);
-                  $scope.soundsrc = $scope.freesound.previews['preview-hq-mp3'];
-                  // var sound = ngAudio.load($scope.freesound.previews['preview-hq-mp3']);
-                      
-      });
+          $scope.$apply(function () {
+            $scope.freesound = response;
+            console.log($scope.freesound);
+            $scope.soundsrc = $scope.freesound.previews['preview-hq-mp3'];
+            // var sound = ngAudio.load($scope.freesound.previews['preview-hq-mp3']);
 
+          });
+
+          console.log($scope.order);
+          $scope.loop = false;
+          $scope.soundvolume = 1;
+          var itemid = $scope.freesound.id;
+          var itemsrc = $scope.freesound.previews['preview-hq-mp3'];
+          //create audio element
+          // console.log($scope.audiodata.newsound);
+          var sound      = document.createElement('audio');
+          var imgid = '#img' + itemid;
+          var divid = 'audio' + $scope.order;
+          sound.crossOrigin = "anonymous";
+          sound.id       = 'aud' + itemid;
+          sound.controls = 'controls';
+          //sound.loop = 'loop';
+          sound.src      = itemsrc;
+          sound.type     = 'audio/mpeg';
+          //put element on playlist
+          document.getElementById(divid).appendChild(sound);
+          if (audiodata.newsound === 1) {
+            sound.autoplay = 'autoplay';
+          }
+
+          $scope.$watch('loop', function(newValue, oldValue) {
+          // if (newValue)
+          //   console.log($scope.loop.booleanVal);
+            sound.addEventListener('ended', function() {
+              if ($scope.loop.booleanVal) {
+                this.currentTime = 0;
+                this.play();
+              }
+
+          }, false);
+        }, true);
+
+        $scope.setvolume = function(val){
+          //console.log($scope.soundvolume);
+          sound.volume = val;
+          borderval = val + 'px';
+
+        }
+
+<<<<<<< HEAD
        $scope.loop = false;
        $scope.soundvolume = 1;
     var itemid = $scope.freesound.id; 
@@ -156,28 +203,36 @@ $scope.removethis = function(index) {
   $scope.$parent.removeitem();
 }
     
+=======
+>>>>>>> 9862b0dcb5492f3c3f4f17808d1f077c4b6d1c04
 
-    console.log($scope.loop);
+        $scope.removethis = function(index) {
+          //$scope.$parent.sounds.splice(index, 1);
+          $scope.$parent.removeitem();
+        }
 
-    var msource = audioCtx.createMediaElementSource(sound);
-    msource.connect(gainNode);
-    sources.push(msource);
-    
-    
+
+        console.log($scope.loop);
+
+        var msource = audioCtx.createMediaElementSource(sound);
+        msource.connect(gainNode);
+        sources.push(msource);
+
+
 
 
 
       }, function(response) {
         // error.
-        
+
         //ok
       });
 
 
 
-},
+    },
 
-    }
+  }
 }]);
 
 app.directive('audiosource', function(){
@@ -216,7 +271,7 @@ app.filter('sectime', [function() {
 }])
 
 app.filter('tostring', function() {
-  return function(a) { 
+  return function(a) {
     return a.toString();
   };
 });
@@ -267,7 +322,3 @@ function findinarray(arraytosearch, key, valuetosearch) {
     }
     return null;
     }
-
-
-
-

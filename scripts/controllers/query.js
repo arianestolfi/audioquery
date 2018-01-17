@@ -16,7 +16,7 @@ $scope.about= 'estreito';
 
 $scope.$watch('query', function() {
   $scope.makequery('https://freesound.org/apiv2/search/text/?query=' + $scope.query + '&fields=id,name,previews,tags,images,duration&page_size=40');
-        
+
     });
 
 
@@ -33,7 +33,7 @@ var req = {
  headers: {
    'Content-Type': 'application/json'
  }
- 
+
 };
 
   $.ajax(req).
@@ -47,7 +47,7 @@ var req = {
       });
       }, function(response) {
         // error.
-        
+
         //ok
       }, function(response) {
         // error.
@@ -67,7 +67,7 @@ var req = {
  headers: {
    'Content-Type': 'application/json'
  }
- 
+
 };
 
   $.ajax(req).
@@ -81,7 +81,7 @@ var req = {
       });
       }, function(response) {
         // error.
-        
+
         //ok
       }, function(response) {
         // error.
@@ -91,7 +91,7 @@ var req = {
 }
 
 //verifying url for pre-selected samples
-    
+
 var queryString = $location.path();
 
 if (queryString) {
@@ -104,12 +104,12 @@ if (queryString) {
 
   for (var i = 0; i < ids.length;i++) {
     $scope.sounds.push({id: ids[i], newsound: 0});
-  }  
+  }
   //$scope.sounds = sounds;
-  console.log(sounds); 
+  console.log(sounds);
   }
 
-} 
+}
 
 
 $scope.player = function(itemid) {
@@ -126,6 +126,8 @@ $location.path(adress, false);
 
 //adding to sounds
 $scope.sounds.push({id: itemid, newsound: 1});
+
+console.log($scope.sounds);
 
 //tell the sound to play
   //var played = document.getElementById("aud" + itemid);
@@ -168,7 +170,7 @@ if (curadress) {
 $location.path(adress, false);
 
 
-//create audio element  
+//create audio element
 var sound      = document.createElement('audio');
 sound.crossOrigin = "anonymous";
 sound.id       = 'aud' + itemid;
