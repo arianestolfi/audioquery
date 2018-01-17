@@ -157,54 +157,7 @@ app.directive ('assPlayer', ['$rootScope', function($rootScope){
 
         }
 
-<<<<<<< HEAD
-       $scope.loop = false;
-       $scope.soundvolume = 1;
-    var itemid = $scope.freesound.id; 
-    var itemsrc = $scope.freesound.previews['preview-hq-mp3'];
-       //create audio element  
-    // console.log($scope.audiodata.newsound);
-    var sound      = document.createElement('audio');
-    var imgid = '#img' + itemid;
-    var divid = 'audio' + $scope.order;
-    sound.crossOrigin = "anonymous";
-    sound.id       = 'aud' + itemid;
-    sound.controls = 'controls';
-     //sound.loop = 'loop';
-    sound.src      = itemsrc;
-    sound.type     = 'audio/mpeg';
-     //put element on playlist
-    document.getElementById(divid).appendChild(sound);
-      if ($scope.audiodata.newsound == 1) {
-        sound.autoplay = 'autoplay';
 
-       }
-       
-       $scope.$watch('loop', function(newValue, oldValue) {
-                if (newValue)
-                    console.log($scope.loop.booleanVal);
-                sound.addEventListener('ended', function() {
-                    if ($scope.loop.booleanVal) {
-                        this.currentTime = 0;
-                        this.play();
-                    }
-
-}, false);
-            }, true);
-
-       $scope.setvolume = function(val){
-                  //console.log($scope.soundvolume);
-                  sound.volume = val;                  
-       }
-
-
-$scope.removethis = function(index) {
-  //$scope.$parent.sounds.splice(index, 1);
-  $scope.$parent.removeitem();
-}
-    
-=======
->>>>>>> 9862b0dcb5492f3c3f4f17808d1f077c4b6d1c04
 
         $scope.removethis = function(index) {
           //$scope.$parent.sounds.splice(index, 1);
