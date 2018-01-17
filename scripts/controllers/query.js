@@ -117,19 +117,12 @@ if (queryString) {
 
 $scope.player = function(itemid) {
   var playerid = playersCounter++;
-  var curadress = $location.path();
-  if (curadress ) {
-    var partsadress = curadress.split("=");
-    var adress = partsadress[0] + "=" + itemid + ',' + partsadress[1];
-  } else {
-    var adress = 'sounds=' + itemid;
-  }
-
-  //change url
-  $location.path(adress, false);
 
   //adding to sounds
   $scope.sounds.unshift({id: itemid, newsound: 1, playerid: playerid});
+
+  //change url
+  $scope.updateAddress();
 
   //tell the sound to play
     //var played = document.getElementById("aud" + itemid);
@@ -153,25 +146,29 @@ $scope.logger2 = function(message) {
   var timeStamp = "[" + timeStamp + "] ";
   console.log(timeStamp + '' + marker + message);
 
+};
+
+$scope.updateAddress = function() {
+  var newadress = $scope.sounds.length > 0 ? 'sounds=' : '';
+  for (var position = 0; position < $scope.sounds.length; position++) {
+    newadress += (position > 0 ? ',' : '') + $scope.sounds[position].id;
+  }
+  $location.path(newadress, false);
 }
 
 $scope.removeitem = function(playerid) {
   //remove item
   // $scope.sounds.splice(index, 1);
   var newsounds = [];
-  //construct new url
-  var newadress = $scope.sounds.length > 0 ? 'sounds=' : '';
-  //var newadress = 'sounds=';
-  for (var i = 0; i < $scope.sounds.length; i++) {
-    if ($scope.sounds[i].playerid !== playerid) {
-      newsounds.push($scope.sounds[i]);
-      newadress += (i > 0 ? ',' : '') + $scope.sounds[i].id;
+  for (var position = 0; position < $scope.sounds.length; position++) {
+    if ($scope.sounds[position].playerid !== playerid) {
+      newsounds.push($scope.sounds[position]);
     }
   }
   //change array
   $scope.sounds = newsounds;
   //change url
-  $location.path(newadress, false);
+  $scope.updateAddress();
   //console.log('a');
 }
 
