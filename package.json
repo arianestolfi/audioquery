@@ -1,0 +1,22 @@
+{
+  "name": "audioquery",
+  "version": "1.0.0",
+  "description": "Tool for query and play sounds with the freesound API",
+  "main": "index.html",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arianestolfi/audioquery.git"
+  },
+  "author": "arianestolfi",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/arianestolfi/audioquery/issues"
+  },
+  "homepage": "https://github.com/arianestolfi/audioquery#readme"
+}
