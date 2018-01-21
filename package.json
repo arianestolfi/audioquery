@@ -1,6 +1,6 @@
 {
   "name": "audioquery",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tool for query and play sounds with the freesound API",
   "main": "index.html",
   "directories": {
