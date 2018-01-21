@@ -137,10 +137,14 @@ app.directive ('assPlayer', ['$rootScope', function($rootScope){
             }
             else{
               if(counter<1){
-                $scope.$parent.logger2('played: ' + $scope.freesound.name);
+                $scope.$parent.logger2('looping: ' + $scope.freesound.name);
               }
               counter++;
             }
+          }
+
+          sound.onpause = function() {
+              $scope.$parent.logger2('paused: ' + $scope.freesound.name);
           }
 
           $scope.$watch('loop', function(newValue, oldValue) {
@@ -153,6 +157,7 @@ app.directive ('assPlayer', ['$rootScope', function($rootScope){
                 
               }
               else{
+                $scope.$parent.logger2('loopstop: ' + $scope.freesound.name);
                 counter=0;
               }
 
