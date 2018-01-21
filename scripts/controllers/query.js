@@ -18,7 +18,7 @@ $scope.about= 'estreito';
 
 
 $scope.$watch('query', function() {
-  $scope.makequery('https://freesound.org/apiv2/search/text/?query=' + $scope.query + '&fields=id,name,previews,tags,images,duration&page_size=40');
+  $scope.makequery('/freesound/search/text/?query=' + $scope.query + '&fields=id,name,previews,tags,images,duration&page_size=40');
 
 });
 
@@ -32,7 +32,7 @@ $scope.singlequery = function(soundid) {
 
   var req = {
     method: 'GET',
-    url: 'https://freesound.org/apiv2/sounds/'+ soundid + '/?fields=id,name,previews,images,duration' + '&token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI',
+    url: '/freesound/sounds/'+ soundid + '/?fields=id,name,previews,images,duration',
     headers: {
       'Content-Type': 'application/json'
     }
@@ -66,7 +66,7 @@ $scope.makequery = function(urlbase) {
 
   var req = {
    method: 'GET',
-   url: urlbase + '&token=2rofapnyzy82X90HwjKw56VhDBVIUp8XMq5HWWVI',
+   url: urlbase,
    headers: {
      'Content-Type': 'application/json'
    }
